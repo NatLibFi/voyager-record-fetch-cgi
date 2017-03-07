@@ -1,4 +1,4 @@
-#/opt/CSCperl/current/bin/perl
+#!/opt/CSCperl/current/bin/perl
 #
 # Copyright 2017 University Of Helsinki (The National Library Of Finland)
 # 
