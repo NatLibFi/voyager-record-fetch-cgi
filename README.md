@@ -1,4 +1,4 @@
-# CGI scripts for fetching record information from Voyager ILS [![Build Status](https://travis-ci.org/NatLibFi/voyager-record-fetch-cgi.svg)](https://travis-ci.org/NatLibFi/voyager-record-fetch-cgi) [![Test Coverage](https://codeclimate.com/github/NatLibFi/voyager-record-fetch-cgi/badges/coverage.svg)](https://codeclimate.com/github/NatLibFi/voyager-record-fetch-cgi/coverage)
+# CGI scripts for fetching record information from Voyager ILS
 
 CGI scripts for fetching record information from Voyager ILS
 
