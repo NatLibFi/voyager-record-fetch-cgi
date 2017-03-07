@@ -114,7 +114,7 @@ sub get_holdings_ids($) {
   my ($bib_id) = @_;
   my $sql = "
     SELECT mfhd_id 
-    FROM $config{'db'}{'dbname'}.bib_mfhd
+    FROM $config{'db'}{'dbname'}db.bib_mfhd
     WHERE bib_id = $bib_id
   ";
 
@@ -226,8 +226,8 @@ sub read_env_file() {
 
 ####################################
 sub open_db_connection() {
-  my $db_username = "ro_" . $config{'db'}{'dbname'} . "db";
-  my $db_passwd = "ro_" . $config{'db'}{'dbname'} . "db";
+  my $db_username = "ro_" . $config{'db'}{'dbname'}db.. "db";
+  my $db_passwd = "ro_" . $config{'db'}{'dbname'}db.. "db";
 
   writelog('debug', 'Opening database connection');
   $dbh = DBI->connect(

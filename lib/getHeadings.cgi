@@ -142,7 +142,7 @@ sub fetch_headings() {
 
   my $sql = "
     SELECT h.heading_id, h.display_heading, h.staffbibs, h.staffrefs, ht.heading_type_desc
-    FROM $config{'db'}{'dbname'}.heading h, $config{'db'}{'dbname'}.index_type it, $config{'db'}{'dbname'}.heading_type ht
+    FROM $config{'db'}{'dbname'}db.heading h, $config{'db'}{'dbname'}db.index_type it, $config{'db'}{'dbname'}db.heading_type ht
     WHERE h.index_type = it.index_type
       AND h.heading_type = ht.heading_type
       AND h.index_type = ht.index_type
@@ -174,7 +174,7 @@ sub fetch_auth_ids($) {
   
   my $sql = "
    SELECT ah.auth_id, ah.heading_id_pointer, ah.heading_id_pointee, rt.reference_type_desc
-   FROM $config{'db'}{'dbname'}.auth_heading ah, $config{'db'}{'dbname'}.reference_type rt
+   FROM $config{'db'}{'dbname'}db.auth_heading ah, $config{'db'}{'dbname'}db.reference_type rt
    WHERE ah.reference_type = rt.reference_type
      AND ah.heading_id_pointer = $heading_id
   ";
@@ -202,7 +202,7 @@ sub fetch_heading($) {
 
   my $sql = "
    SELECT distinct h.display_heading
-   FROM $config{'db'}{'dbname'}.heading h
+   FROM $config{'db'}{'dbname'}db.heading h
    WHERE h.heading_id = $heading_id
   ";
 
@@ -375,8 +375,8 @@ sub read_env_file() {
 }
 ####################################
 sub open_db_connection() {
-  my $db_username = "ro_" . $config{'db'}{'dbname'} . "db";
-  my $db_passwd = "ro_" . $config{'db'}{'dbname'} . "db";
+  my $db_username = "ro_" . $config{'db'}{'dbname'}db.. "db";
+  my $db_passwd = "ro_" . $config{'db'}{'dbname'}db.. "db";
 
   writelog('debug', 'Opening database connection');
   $dbh = DBI->connect(

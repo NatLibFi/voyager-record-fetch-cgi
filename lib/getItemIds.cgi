@@ -114,7 +114,7 @@ sub get_item_ids($) {
   my ($mfhd_id) = @_;
   my $sql = "
     SELECT item_id 
-    FROM $config{'db'}{'dbname'}.mfhd_item
+    FROM $config{'db'}{'dbname'}db.mfhd_item
     WHERE mfhd_id = $mfhd_id
   ";
 
@@ -225,8 +225,8 @@ sub read_env_file() {
 }
 ####################################
 sub open_db_connection() {
-  my $db_username = "ro_" . $config{'db'}{'dbname'} . "db";
-  my $db_passwd = "ro_" . $config{'db'}{'dbname'} . "db";
+  my $db_username = "ro_" . $config{'db'}{'dbname'}db.. "db";
+  my $db_passwd = "ro_" . $config{'db'}{'dbname'}db.. "db";
 
   writelog('debug', 'Opening database connection');
   $dbh = DBI->connect(

@@ -417,8 +417,8 @@ sub get_sys_applied_item_statuses() {
 }
 ####################################
 sub open_db_connection() {
-  my $db_username = "ro_" . $config{'db'}{'dbname'} . "db";
-  my $db_passwd = "ro_" . $config{'db'}{'dbname'} . "db";
+  my $db_username = "ro_" . $config{'db'}{'dbname'}db.. "db";
+  my $db_passwd = "ro_" . $config{'db'}{'dbname'}db.. "db";
 
   writelog('debug', 'Opening database connection');
   $dbh = DBI->connect(
@@ -447,8 +447,8 @@ sub get_cat_locs($) {
   my $sql = "
     SELECT csl.location_id, l.location_name, l.library_id,
       li.library_display_name, cpl.default_item_type, it.item_type_name
-    FROM $config{'db'}{'dbname'}.cat_operator co, $config{'db'}{'dbname'}.cat_security_locs csl, $config{'db'}{'dbname'}.location l, $config{'db'}{'dbname'}.library li,
-      $config{'db'}{'dbname'}.cat_policy_locs cpl, $config{'db'}{'dbname'}.item_type it
+    FROM $config{'db'}{'dbname'}db.cat_operator co, $config{'db'}{'dbname'}db.cat_security_locs csl, $config{'db'}{'dbname'}db.location l, $config{'db'}{'dbname'}db.library li,
+      $config{'db'}{'dbname'}db.cat_policy_locs cpl, $config{'db'}{'dbname'}db.item_type it
     WHERE co.cat_profile_id = csl.cat_profile_id 
       AND csl.location_id = l.location_id
       AND cpl.location_id = csl.location_id
@@ -481,7 +481,7 @@ sub get_locs($) {
   my ($user) = @_;
   my $sql = "
     SELECT l.location_id, l.location_code, l.location_name
-    FROM $config{'db'}{'dbname'}.cat_operator co, $config{'db'}{'dbname'}.cat_security_locs csl, $config{'db'}{'dbname'}.location l
+    FROM $config{'db'}{'dbname'}db.cat_operator co, $config{'db'}{'dbname'}db.cat_security_locs csl, $config{'db'}{'dbname'}db.location l
     WHERE co.cat_profile_id = csl.cat_profile_id 
       AND csl.location_id = l.location_id
       AND co.operator_id = '$user'
@@ -509,7 +509,7 @@ sub get_locs($) {
 sub get_item_types() {
   my $sql = "
     SELECT it.item_type_id, it.item_type_name
-    FROM $config{'db'}{'dbname'}.item_type it
+    FROM $config{'db'}{'dbname'}db.item_type it
     ORDER BY it.item_type_name
   ";
 
@@ -534,7 +534,7 @@ sub get_item_types() {
 sub get_item_status_types() {
   my $sql = "
     SELECT item_status_type, item_status_desc
-    FROM $config{'db'}{'dbname'}.item_status_type
+    FROM $config{'db'}{'dbname'}db.item_status_type
     ORDER BY item_status_desc
   ";
 
@@ -559,7 +559,7 @@ sub get_item_status_types() {
 sub get_media_types() {
   my $sql = "
     SELECT media_type_id, type_code, type
-    FROM $config{'db'}{'dbname'}.media_type
+    FROM $config{'db'}{'dbname'}db.media_type
     ORDER BY type
   ";
 
@@ -584,7 +584,7 @@ sub get_media_types() {
 sub get_action_types() {
   my $sql = "
     SELECT action_type_id, action_type
-    FROM $config{'db'}{'dbname'}.action_type
+    FROM $config{'db'}{'dbname'}db.action_type
   ";
 
   writelog('info', "Fetching action types from DB");

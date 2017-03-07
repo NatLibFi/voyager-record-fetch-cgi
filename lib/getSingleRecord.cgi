@@ -153,7 +153,7 @@ sub get_item_records($) {
   my ($mfhd_id) = @_;
   my $sql = "
     SELECT mi.item_id
-    FROM $config{'db'}{'dbname'}.mfhd_item mi
+    FROM $config{'db'}{'dbname'}db.mfhd_item mi
     WHERE mi.mfhd_id = $mfhd_id
   ";
 
@@ -456,8 +456,8 @@ sub read_env_file() {
 
 ####################################
 sub open_db_connection() {
-  my $db_username = "ro_" . $config{'db'}{'dbname'} . "db";
-  my $db_passwd = "ro_" . $config{'db'}{'dbname'} . "db";
+  my $db_username = "ro_" . $config{'db'}{'dbname'}db.. "db";
+  my $db_passwd = "ro_" . $config{'db'}{'dbname'}db.. "db";
 
   writelog('debug', 'Opening database connection');
   $dbh = DBI->connect(
@@ -487,7 +487,7 @@ sub get_bib_record($) {
   my ($bib_id) = @_;
   my $sql = "
     SELECT MARC_RECORD 
-    FROM $config{'db'}{'dbname'}.BIBBLOB_VW
+    FROM $config{'db'}{'dbname'}db.BIBBLOB_VW
     WHERE BIB_ID = $bib_id
   ";
 
@@ -516,7 +516,7 @@ sub get_auth_record($) {
   my ($auth_id) = @_;
   my $sql = "
     SELECT MARC_RECORD
-    FROM $config{'db'}{'dbname'}.AUTHBLOB_VW
+    FROM $config{'db'}{'dbname'}db.AUTHBLOB_VW
     WHERE AUTH_ID = $auth_id
   ";
 
@@ -546,7 +546,7 @@ sub get_mfhd_record($) {
   my ($mfhd_id) = @_;
   my $sql = "
     SELECT MARC_RECORD
-    FROM $config{'db'}{'dbname'}.MFHDBLOB_VW
+    FROM $config{'db'}{'dbname'}db.MFHDBLOB_VW
     WHERE MFHD_ID = $mfhd_id
   ";
 
@@ -580,7 +580,7 @@ sub get_item_record($) {
       mi.item_enum, mi.year, i.create_date, i.create_operator_id, 
       i.create_location_id, i.modify_date, i.modify_operator_id, 
       i.modify_location_id, mi.mfhd_id
-    FROM $config{'db'}{'dbname'}.mfhd_item mi, item i
+    FROM $config{'db'}{'dbname'}db.mfhd_item mi, $config{'db'}{'dbname'}db.item i
     LEFT OUTER JOIN item_barcode ib on i.item_id = ib.item_id
     AND ib.barcode_status = 1
     WHERE i.item_id = $item_id
@@ -609,7 +609,7 @@ sub get_item_statuses($) {
   my ($item_id) = @_;
   my $sql = "
     SELECT item_status, item_status_date
-    FROM $config{'db'}{'dbname'}.item_status
+    FROM $config{'db'}{'dbname'}db.item_status
     WHERE item_id = $item_id
   ";
 
@@ -642,7 +642,7 @@ sub get_history($$$) {
 
   my $sql = "
     SELECT *
-    FROM $config{'db'}{'dbname'}." . $table . "_history
+    FROM $config{'db'}{'dbname'}db." . $table . "_history
     WHERE " . $table . "_id = $id
     ORDER BY action_date desc
   ";
