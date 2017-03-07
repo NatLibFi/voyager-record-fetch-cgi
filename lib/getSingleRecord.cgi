@@ -456,8 +456,8 @@ sub read_env_file() {
 
 ####################################
 sub open_db_connection() {
-  my $db_username = "ro_" . $config{'db'}{'dbname'}db.. "db";
-  my $db_passwd = "ro_" . $config{'db'}{'dbname'}db.. "db";
+  my $db_username = "ro_" . $config{'db'}{'dbname'} . "db";
+  my $db_passwd = "ro_" . $config{'db'}{'dbname'} . "db";
 
   writelog('debug', 'Opening database connection');
   $dbh = DBI->connect(
